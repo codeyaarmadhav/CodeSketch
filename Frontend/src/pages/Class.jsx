@@ -1,9 +1,12 @@
 import React from 'react'
-import ClassUMLForm from '../Components/ClassForm'
+import ClassForm from '../Components/Class/Index.jsx'
+import { ClassContextProvider } from '../Components/Class/ClassContext'
 
 function Class() {
   return (
-    <div><ClassUMLForm /></div>
+    <ClassContextProvider>
+      <ClassForm />
+    </ClassContextProvider>
   )
 }
 

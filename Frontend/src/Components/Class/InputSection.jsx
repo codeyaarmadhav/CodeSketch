@@ -1,21 +1,17 @@
-import React, { useState } from 'react'
-import Title from './Title';
-import SubTitle from './SubTitle';
-import DisplayUML from './DisplayUML';
+import React from 'react'
+import { useClassContext } from './ClassContext';
+import SubTitle from '../SubTitle';
 
-function ClassForm() {
-    //const [umlImage, setUmlImage] = useState('');
-
-    const [className, setClassName] = useState('');
-    const [attributeName, setAttributeName] = useState({name:"", attributeType: "Integer"});
-    const [methodName, setMethodName] = useState({methodType: "Void"});
-    const [classInput, setClassInput] = useState([]);
-
-    const [generalRelation, setGeneralRelation] = useState([]);
-    const [generalRelationInput, setGeneralRelationInput] = useState({from:"", to:""})
-
-    const [relation, setRelation] = useState([]);
-    const [relationInput, setRelationInput] = useState({from:"", multiplicity1:"", associationName: "", assciationType:"", direction:"", to:"", multiplicity2:""});
+function InputSection() {
+    
+    const {className, setClassName,
+        attributeName, setAttributeName,
+        methodName, setMethodName,
+        classInput, setClassInput,
+        generalRelation, setGeneralRelation,
+        generalRelationInput, setGeneralRelationInput,
+        relation, setRelation,
+        relationInput, setRelationInput} = useClassContext();
 
     //add clsses to classInput
     function addClass(){
@@ -68,105 +64,8 @@ function ClassForm() {
         setRelation([...relation, relationInput]);
         setRelationInput({from:"", multiplicity1:"", associationName: "", assciationType:"", direction:"", to:"", multiplicity2:""});
     }
-
-    //removeclass
-    function removeClass(index){
-        setClassInput(classInput.filter((_, i) => i !== index));
-    }
-
-    //remove attribute
-    function removeAttribute(index){
-        setClassInput(classInput.map((classes) => {
-            return {
-                ...classes, attributes: classes.attributes.filter((_, i) => i !== index)
-            }
-        }));
-    }
-
-    //remove method
-    function removeMethod(index){
-        setClassInput(classInput.map((classes) => {
-            return {
-                ...classes, methods: classes.methods.filter((_, i) => i !== index)
-            }
-        }));
-    }
-
-    //remove general relation
-    function removeGeneralRelation(index){
-        setGeneralRelation(generalRelation.filter((_, i) => i !== index));
-    }
-
-    //remove relation
-    function removeRelation(index){
-        setRelation(relation.filter((_, i) => i !== index));
-    }
-
-    //generate plant uml code
-    function generatePlantUML(){
-        let code = '@startuml\n';
-
-        code += classInput.map((classes)=> {
-            return `class ${classes.className}{\n ${classes.attributes.map((attribute) => `${attribute}\n`)}\n${classes.methods.map((method) => `${method}\n`)}}\n`;
-        }).join("");
-
-        code += generalRelation.map((relation) => {
-            return `${relation.from} <|-- ${relation.to}\n`;
-        }).join("");
-
-        code += relation.map((rel) => {
-            return `${rel.from} ${rel.multiplicity1.length > 0 ? `"${rel.multiplicity1}"`: "" } ${rel.assciationType} ${rel.multiplicity2.length > 0 ? `"${rel.multiplicity2}"`: "" } ${rel.to} ${rel.associationName.lenght > 0 ? `: ${rel.associationName}` : ""}\n`;
-        }).join("");
-
-        code += "@enduml";
-
-        return code;
-    }
-
-    {/* 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-    
-        try {
-          const encodedUml = PlantUmlEncoder.encode(generatePlantUML()); // ✅ Encode UML
-          const imageUrl = `http://www.plantuml.com/plantuml/png/${encodedUml}`;
-    
-          setUmlImage(imageUrl); // ✅ Update state with URL
-        } catch (error) {
-          console.error("Error generating UML:", error);
-        }
-    };
-    
-    const handleDownload = async () => {
-      try {
-        const response = await fetch(umlImage, {
-          mode: 'cors' // make sure CORS is allowed
-        });
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "diagram.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Optional: revoke object URL to free memory
-        window.URL.revokeObjectURL(url);
-      } catch (error) {
-        console.error("Download failed", error);
-        alert("Failed to download image. Try right-click > Save Image As.");
-      }
-    };
-    */}
-    
-    //console.log(relation);
   return (
     <div>
-        <Title text1="Class Diagram" text2="Generator" />
-
         {/* Add Class to classInput */}
         <SubTitle text1="Add Class" />
         <div>
@@ -367,102 +266,8 @@ function ClassForm() {
 
             <button onClick={handleRelation} className='bg-[#e6e6e6] text-gray-700 p-2 my-2 w-full rounded cursor-pointer'>Add Relation</button>
         </div>
-
-        {/* Display classes */}
-        <div className={`${classInput.length > 0 ? "flex" : "hidden"} flex-col w-full  `}>
-            <SubTitle text1={"Classes"} />
-            <div className='flex flex-col w-full'>
-                {classInput.map((classses, index) => (
-                    <div key={index} className="flex flex-col items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-0 sm:m-2">
-                        
-                        <div className='flex w-full items-center justify-between'>
-                            <p className='bg-gray-200 rounded p-1'><span className=' mr-4 text-md sm:text-xl leading-2 text-gray-700'>Class</span>{classses.className}</p>
-                            <button className="bg-[#a0a7ac] text-white text-xs md:text-sm rounded p-1 cursor-pointer" onClick={() => removeClass(index)}>Remove</button>
-                        </div>
-                        
-                        <div className="flex flex-col md:flex-row md:gap-18 mb-2 w-full">
-                            <div className={`${classses.attributes.length > 0 ? "flex" : "hidden"} flex-col w-full md:w-1/2 `}>
-                                <h1 className='m-4 text-md sm:text-lg leading-2 text-gray-700'>Attributes</h1>
-                                <div>
-                                    {classses.attributes.map((attribute, index) => (
-                                    <div key={index} className="flex items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-0 sm:m-2">
-                                        <p>{attribute}</p>
-                                        <button className="bg-[#a0a7ac] text-white text-xs md:text-sm rounded p-1 cursor-pointer" onClick={() => removeAttribute(index)}>Remove</button>
-                                    </div>
-                                    ))}
-                                </div>
-                                
-                            </div>
-                                
-                            <div className={`${classses.methods.length > 0 ? "flex" : "hidden"} flex-col w-full md:w-1/2 `}>
-                            <h1 className='m-4 text-md sm:text-xl leading-2 text-gray-700'>Methods</h1>
-                                <div>
-                                    {classses.methods.map((method, index) => (
-                                    <div key={index} className="flex items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-0 sm:m-2">
-                                        <p >{method}</p>
-                                        <button className="bg-[#a0a7ac] text-white text-xs md:text-sm rounded p-1 cursor-pointer" onClick={() => removeMethod(index)}>Remove</button>
-                                    </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                ))}
-            </div>
-        </div>
-
-        {/* Display general relation */}
-        <div className={`${generalRelation.length > 0 ? "flex" : "hidden"} flex-col w-1/2`}>
-            <SubTitle text1={"Generalization/Specialization"} />
-            {generalRelation.map((relation, index) => (
-                <div key={index} className="flex items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-0 sm:m-2">
-                    <p>{relation.from} <span className='text-gray-500'>Extends</span> {relation.to}</p>
-                    <button className="bg-[#a0a7ac] text-white text-xs md:text-sm rounded p-1 cursor-pointer" onClick={() => removeGeneralRelation(index)}>Remove</button>
-                </div>
-            ))}
-        </div>
-
-        {/* Display Relation */}
-        <div className={`${relation.length > 0 ? "flex" : "hidden"} flex-col w-1/2`}>
-            <SubTitle text1={"Relation"} />
-            {relation.map((relation, index) => (
-                <div key={index} className="flex items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-0 sm:m-2">
-                    <p>{relation.from} <span className='text-gray-500'>{relation.assciationType}</span> {relation.associationName} <span className='text-gray-500'>{relation.direction}</span> {relation.to}</p>
-                    <button className="bg-[#a0a7ac] text-white text-xs md:text-sm rounded p-1 cursor-pointer" onClick={() => removeRelation(index)}>Remove</button>
-                </div>
-            ))}
-        </div>
-
-        {/*
-        Generate Class Diagram 
-        <SubTitle text1={"Generate Class Diagram"} />
-        <div className='mb-2'>
-            <button onClick={handleSubmit} className='bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer'>Generate Class Diagram</button>
-        </div>
-
-        Display and Download Diagram 
-        {umlImage && (
-            <div className="">
-                <SubTitle text1={"Generated UML Diagram"} />
-                <div className="flex flex-col items-center my-15">
-                    <img src={umlImage} alt="UML Diagram" />
-                </div>
-                <div>
-                    <button
-                        onClick={handleDownload}
-                        className="bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer"
-                    >
-                    Download Diagram
-                    </button>
-                </div>
-            </div>
-        )}
-        */}
-
-        <DisplayUML code={generatePlantUML()} />
     </div>
   )
 }
 
-export default ClassForm
+export default InputSection
