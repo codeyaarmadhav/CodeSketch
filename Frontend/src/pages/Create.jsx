@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
-import { CrtContext } from '../context/crtContext';
+import { CrtContext } from '../context/CrtContext';
 import Title from '../Components/Title';
 import CreateCard from '../Components/CreateCard.jsx';
-import { assets } from '../assets/frontend_assets/assets';
 import Subscribe from '../Components/Subscribe';
 
 function Create() {
