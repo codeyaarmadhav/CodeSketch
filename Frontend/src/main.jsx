@@ -10,7 +10,6 @@ import CrtContextProvider from './context/crtContext.jsx'
 import Class from './pages/Class.jsx'
 import Sequence from './pages/Sequence.jsx'
 import About from './pages/About.jsx'
-import ScrollToTop from './ScrollToTop.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 

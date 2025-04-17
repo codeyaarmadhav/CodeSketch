@@ -2,7 +2,7 @@ import React from 'react'
 import UseCaseForm from '../Components/UseCase/Index.jsx'
 import { UseCaseContextProvider } from '../Components/UseCase/UseCaseContext.jsx'
 
-function Usecase() {
+function UseCase() {
   return (
     <UseCaseContextProvider>
       <UseCaseForm />
@@ -10,4 +10,4 @@ function Usecase() {
   )
 }
 
-export default Usecase
+export default UseCase;
