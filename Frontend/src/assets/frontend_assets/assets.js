@@ -4,7 +4,7 @@ import profile_icon from './profile_icon.png';
 import menu_icon from './menu_icon.png';
 import dropdown_icon from './dropdown_icon.png';
 import newlogo from './newlogo.png';
-import hero from './hero.png';
+import hero from './Hero.png';
 import hero2 from './hero2.png';
 import hero3 from './hero3.png';
 import about from './about_us.png';
