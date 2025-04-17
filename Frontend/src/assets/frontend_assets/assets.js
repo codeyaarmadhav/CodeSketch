@@ -4,8 +4,11 @@ import profile_icon from './profile_icon.png';
 import menu_icon from './menu_icon.png';
 import dropdown_icon from './dropdown_icon.png';
 import newlogo from './newlogo.png';
-
-
+import hero from './hero.png';
+import hero2 from './hero2.png';
+import hero3 from './hero3.png';
+import about from './about_us.png';
+import contact from './contact.png';
 
 import usecase from './usecase.png';
 import classd from './class.png';
@@ -13,8 +16,21 @@ import sequence from './sequence.png';
 import activity from './activity.png';
 import component from './component.png';
 
+import community from './community.png';
+import time from './time.png';
+import umlinfo from './uml-info.png';
+import storage from './storage.png';
+import exportinfo from './export.png';
+import education from './education.png';
+import crossplatform from './cross-platform.png';
+import diagraminfo from './diagram-info.png';
+import userinterfaceinfo from './user-interface.png'
+import opensourceinfo from './open-source.png';
+
 export const assets = {
-    logo, search_icon, profile_icon, menu_icon, dropdown_icon, activity, newlogo
+    logo, search_icon, profile_icon, menu_icon, dropdown_icon, activity, newlogo, hero, hero2, hero3, about, contact,
+    usecase, classd, sequence,
+    community, time, umlinfo, storage, exportinfo, education, crossplatform, diagraminfo, userinterfaceinfo, opensourceinfo
 }
 
 export const create = [

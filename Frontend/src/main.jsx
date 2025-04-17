@@ -8,6 +8,11 @@ import Create from './pages/Create.jsx'
 import Home from './pages/Home.jsx'
 import CrtContextProvider from './context/crtContext.jsx'
 import Class from './pages/Class.jsx'
+import Sequence from './pages/Sequence.jsx'
+import About from './pages/About.jsx'
+import ScrollToTop from './ScrollToTop.jsx'
+import Contact from './pages/Contact.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,8 +22,11 @@ const router = createBrowserRouter(
         <Route path="" element={<Create />} />
         <Route path="usecase" element={<UseCase />} />
         <Route path="class" element={<Class />} />
+        <Route path="sequence" element={<Sequence />} />
       </Route>
-      <Route path="*" element={<h1>404 Not Found</h1>} />
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<NotFound />} />
     </Route>
   )
 )
