@@ -10,13 +10,13 @@ function Footer() {
                 <img className='w-30 my-5' src={assets.newlogo} alt="logo" />
                 <p className='w-full sm:w-2/3 text-gray-700 text-sm'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum necessitatibus laboriosam, excepturi atque omnis cupiditate tempora nulla at veniam nesciunt similique temporibus tempore laudantium possimus. Laudantium, enim? Amet, repellendus hic?</p>
             </div>
-            <div className='flex flex-col sm:flex-row w-full sm:w-2/6 justify-between'>
+            <div className='flex w-full sm:w-2/6 justify-between'>
                 <div className='flex flex-col mb-5 sm:mb-0'>
                     <h1 className='font-semibold text-xl my-5'>LINKS</h1>
                     <Link to="/"><p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>Home</p></Link>
-                    <p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>Create</p>
-                    <p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>About</p>
-                    <p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>Contact</p>
+                    <Link to="/create"><p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>Create</p></Link>
+                    <Link to="/about"><p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>About</p></Link>
+                    <Link to="/contact"><p className='text-gray-500 text-sm cursor-pointer hover:text-gray-700 leading-6'>Contact</p></Link>
                 </div>
                 <div className='flex flex-col mb-4 sm:mb-0'>
                     <h1 className='font-semibold text-xl my-5'>GET IN TOUCH</h1>

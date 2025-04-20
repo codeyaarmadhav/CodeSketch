@@ -1,6 +1,7 @@
 import React from 'react'
 import { useUseCaseContext } from './UseCaseContext.jsx';
 import SubTitle from '../SubTitle.jsx';
+import {toast} from 'react-toastify';
 
 function InputSection() {
 
@@ -16,7 +17,11 @@ function InputSection() {
       if (actorInput.trim()) {
         setActors([...actors, actorInput.trim()]);
         setActorInput("");
+        toast.success("Actor Added");
+      } else {
+        toast.error('Actor name can not be empty ')
       }
+      
     };
   
     // Add Use Case
@@ -24,6 +29,9 @@ function InputSection() {
       if (useCaseInput.trim()) {
         setUseCases([...useCases, useCaseInput.trim()]);
         setUseCaseInput("");
+        toast.success("Use Case added")
+      } else {
+        toast.error('Use Case can not be empty ')
       }
     };
   
@@ -32,6 +40,9 @@ function InputSection() {
       if (relInput.from && relInput.to) {
         setRelationships([...relationships, { ...relInput }]);
         setRelInput({ from: "", to: "", type: "-->" });
+        toast.success("Relationship added")
+      } else{
+        toast.error('Please select Actor/Usecase')
       }
     };
 

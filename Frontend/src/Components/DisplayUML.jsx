@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PlantUmlEncoder from 'plantuml-encoder';
 import SubTitle from './SubTitle';
 
+
 function DisplayUML({code}) {
     const [umlImage, setUmlImage] = useState('');
     
@@ -10,7 +11,7 @@ function DisplayUML({code}) {
     
         try {
           const encodedUml = PlantUmlEncoder.encode(code); // ✅ Encode UML
-          const imageUrl = `http://www.plantuml.com/plantuml/png/${encodedUml}`;
+          const imageUrl = `https://www.plantuml.com/plantuml/png/${encodedUml}`;
     
           setUmlImage(imageUrl); // ✅ Update state with URL
         } catch (error) {

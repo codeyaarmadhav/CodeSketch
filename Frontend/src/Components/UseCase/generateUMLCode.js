@@ -9,11 +9,11 @@ function generateUMLCode() {
     code += `${actorStyle}\n`;
 
     actors.forEach((actor) => {
-      code += `actor ${actor}\n`;
+      code += `actor "${actor}"\n`;
     });
 
     useCases.forEach((useCase) => {
-      code += `(${useCase})\n`;
+      code += `("${useCase}")\n`;
     });
 
     relationships.forEach(({ from, to, type }) => {

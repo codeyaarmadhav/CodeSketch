@@ -23,7 +23,7 @@ function About() {
         </div>
 
         <div>
-            <div className='mt-7 mb-5 text-lg'>
+            <div className='mt-2 sm:mt-7 sm:mb-5 text-lg'>
                 <Title text1={"Why"} text2={"Choose Us?"} />
             </div>
 

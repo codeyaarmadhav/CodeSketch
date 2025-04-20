@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 
 function HeroSection() {
   return (
-    <div className='mb-5 mt-8'>
+    <div className='mb-2 sm:mb-5 mt-8'>
         <Link to="/create" >
             <div className='flex flex-col sm:flex-row border border-gray-300 leading-8 mb-5'>
                 <div className='w-full sm:w-1/2 flex flex-col justify-center items-center p-10'>

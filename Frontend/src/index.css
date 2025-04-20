@@ -24,3 +24,8 @@ a.active hr{
   font-style: normal;
 }
 
+.custom-toast-bg {
+    background-color: #e6e6e6 !important;
+    color: black !important;
+    border-radius: 8px;
+  }

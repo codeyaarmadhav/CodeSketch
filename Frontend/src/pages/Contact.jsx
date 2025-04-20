@@ -12,11 +12,11 @@ function Contact() {
         </div>
         
 
-        <div className='flex flex-col sm:flex-row items-center justify-around mb-28'>
+        <div className='flex flex-col sm:flex-row items-center justify-around mb-28 gap-7 sm:gap-0'>
             <div className='w-full max-w-[480px] shadow-lg border border-gray-200 rounded overflow-hidden'>
                 <img src={assets.contact} alt="about " />
             </div>
-            <div className='text-md text-gray-600 flex flex-col items-around justify-around gap-5'>
+            <div className='text-md text-gray-600 flex flex-col items-around justify-around gap-3 sm:gap-5 text-md sm:text-base'>
                 <SubTitle text1={"Our Location"} />
                 <p>28 Chamunda Puri, Near BNP road, Dewas</p>
 
@@ -28,7 +28,7 @@ function Contact() {
 
                 <SubTitle text1={"Career at CodeSketch"} />   
 
-                <button class="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all sm:w-1/2 duration-500 cursor-pointer">Explore Jobs</button>
+                <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all sm:w-1/2 duration-500 cursor-pointer">Explore Jobs</button>
 
                 <p>Learn more about our teams and job openings.</p>
             </div>
