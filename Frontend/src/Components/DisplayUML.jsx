@@ -59,8 +59,8 @@ function DisplayUML({code}) {
                 </div>
                 <div>
                     <button
-                        onClick={handleDownload}
-                        className="bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer"
+                      onClick={handleDownload}
+                      className="bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer"
                     >
                     Download Diagram
                     </button>

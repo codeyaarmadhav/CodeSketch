@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { startTransition, useState } from "react";
 import plantumlEncoder from "plantuml-encoder";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
@@ -6,6 +6,7 @@ import SubTitle from "./SubTitle";
 const GanttChart = () => {
   const [tasks, setTasks] = useState([]);
   const [taskInput, setTaskInput] = useState({ name: "", start: "", end: "" });
+  const [startDate, setStartDate] = useState("")
   const [umlImage, setUmlImage] = useState("");
 
   // Add Task
@@ -24,10 +25,14 @@ const GanttChart = () => {
 
   // Generate PlantUML Gantt Code
   const generatePlantUML = () => {
-    let code = "@startgantt\n[Project] lasts 30 days\n\n";
+    let code = "@startgantt\n[Project] lasts 30 days\n";
+
+    code += `project starts ${startDate} \n`
+
     tasks.forEach(({ name, start, end }) => {
-      code += `[${name}] starts ${start} and ends ${end}\n`;
+      code += `["${name}"] starts ${start} and ends ${end}\n`;
     });
+
     code += "@endgantt";
     return code;
   };
@@ -61,11 +66,19 @@ const GanttChart = () => {
       console.error("Download failed", error);
       alert("Failed to download image. Try right-click > Save Image As.");
     }
+    
   };
+
 
   return (
     <div>
       <Title text1={"Gantt Chart"} text2={"Generator"} />
+
+      <SubTitle text1={"Gantt Start date"}/>
+      <div>
+        <input onChange={(e)=>setStartDate(e.target.value)} type="date" className="border p-2 rounded w-full"/>
+        <button className="bg-[#e6e6e6] text-gray-700 p-2 my-2 w-full rounded cursor-pointer">Set date</button>
+      </div>
 
       <SubTitle text1={"Add Tasks"} />
       <div className="mb-2 space-y-2">
@@ -76,20 +89,33 @@ const GanttChart = () => {
           onChange={(e) => setTaskInput({ ...taskInput, name: e.target.value })}
           className="border p-2 rounded w-full"
         />
-        <input
-          type="text"
-          placeholder="Start Date (e.g., 2025/04/18)"
-          value={taskInput.start}
-          onChange={(e) => setTaskInput({ ...taskInput, start: e.target.value })}
-          className="border p-2 rounded w-full"
-        />
-        <input
-          type="text"
-          placeholder="End Date (e.g., 2025/04/25)"
-          value={taskInput.end}
-          onChange={(e) => setTaskInput({ ...taskInput, end: e.target.value })}
-          className="border p-2 rounded w-full"
-        />
+        <div className="flex gap-5">
+          <div className="w-full">
+            <h1 className="text-lg">Task Start Date</h1>
+            <input
+              type="date"
+              placeholder="Start Date (e.g., 2025/04/18)"
+              value={taskInput.start}
+              onChange={(e) => setTaskInput({ ...taskInput, start: e.target.value })}
+              className="border p-2 rounded w-full"
+            />
+          </div>
+
+          <div className="w-full">
+            <h1 className="text-lg">Task End Date</h1>
+            <input
+              type="date"
+              placeholder="End Date (e.g., 2025/04/25)"
+              value={taskInput.end}
+              onChange={(e) => setTaskInput({ ...taskInput, end: e.target.value })}
+              className="border p-2 rounded w-full"
+            />
+          </div>
+          
+          
+        </div>
+        
+        
         <button
           onClick={addTask}
           className="bg-[#e6e6e6] text-gray-700 p-2 w-full rounded cursor-pointer"

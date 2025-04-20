@@ -7,7 +7,7 @@ function generateUMLCode() {
     let code = '@startuml\n';
 
     code += classInput.map((classes)=> {
-        return `class ${classes.className}{\n ${classes.attributes.map((attribute) => `${attribute}\n`)}\n${classes.methods.map((method) => `${method}\n`)}}\n`;
+        return `class ${classes.className}{\n ${classes.attributes.map((attribute) => `${attribute}\n`).join("")}\n${classes.methods.map((method) => `${method}\n`).join("")}}\n`;
     }).join("");
 
     code += generalRelation.map((relation) => {

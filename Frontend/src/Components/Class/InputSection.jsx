@@ -1,6 +1,7 @@
 import React from 'react'
 import { useClassContext } from './ClassContext';
 import SubTitle from '../SubTitle';
+import { toast } from 'react-toastify';
 
 function InputSection() {
     
@@ -15,16 +16,27 @@ function InputSection() {
 
     //add clsses to classInput
     function addClass(){
-        if(className.length === 0) return;
+        if(className.length === 0){
+            toast.error("Class name can not be empty");
+            return;
+        } 
         setClassInput((prev) => {
             return [...prev, {className: className, attributes: [], methods: []}]
         })
         setClassName('');
+        toast.success("Class added");
     }
 
     //add attributes to classInput
     function addAttribute(){
-        if(attributeName.className.length === 0 || attributeName.name.length === 0) return;
+        if(attributeName.className.length === 0){
+            toast.error("No class selected");
+            return;
+        }
+        else if( attributeName.name.length === 0){
+            toast.error("Attribute name can not be empty");
+            return;
+        }
         let updatedClass = classInput.map((classes) => {
             if(classes.className === attributeName.className){
                 return {
@@ -35,12 +47,19 @@ function InputSection() {
         })
         setClassInput(updatedClass);
         setAttributeName({...attributeName, name:""});
-        console.log("huya");
+        toast.success("Attribute added");
     }
 
     //add methods to classInput
     function addMethod(){
-        if(methodName.methodClass.length === 0 || methodName.name.length === 0) return;
+        if(methodName.methodClass.length === 0){
+            toast.error("No class selected!")
+            return;
+        }
+        else if(methodName.name.length === 0){
+            toast.error("Method Name can not be empty")
+            return;
+        }
         let updatedClass = classInput.map((classes) => {
             if(classes.className === methodName.methodClass){
                 return {
@@ -50,20 +69,41 @@ function InputSection() {
             return classes;
         })
         setClassInput(updatedClass);
+        setMethodName({...methodName, name:""});
+        toast.success("Method added");
     }
 
     //add general relation to classInput
     function handleGeneralRelation(){
-        if(generalRelationInput.from.length === 0 || generalRelationInput.to.length === 0) return;
+        if(generalRelationInput.from.length === 0){
+            toast.error("No clas 1 selected");
+            return;
+        } else if (generalRelationInput.to.length === 0){
+            toast.error("No class 2 selected");
+            return;
+        }
         setGeneralRelation([...generalRelation, generalRelationInput]);
         setGeneralRelationInput({from:"", to:""});
+        toast.success("Generalization/Specialization Added");
     }
 
+    //add relation
     function handleRelation(){
-        if(relationInput.from.length === 0 || relationInput.assciationType.length === 0 || relationInput.to.length === 0) return;
+        if(relationInput.from.length === 0) {
+            toast.error("Select class 1");
+            return;
+        } else if(relationInput.assciationType.length === 0){
+            toast.error("Select Association Type");
+            return;
+        } else if(relationInput.to.length === 0){
+            toast.error("Select class 2");
+            return;
+        }
         setRelation([...relation, relationInput]);
-        setRelationInput({from:"", multiplicity1:"", associationName: "", assciationType:"", direction:"", to:"", multiplicity2:""});
+        setRelationInput({...relationInput, associationName: ""});
+        toast.success("Relation added successfully");
     }
+
   return (
     <div>
         {/* Add Class to classInput */}
@@ -75,6 +115,7 @@ function InputSection() {
                 className='border p-2 rounded w-full'
                 value={className}
                 onChange={(e) => setClassName(e.target.value)}
+                onKeyDown={(e) => {if(e.key === "Enter") addClass()}}
             />
             <button onClick={addClass} className='bg-[#e6e6e6] text-gray-700 p-2 my-2 w-full rounded cursor-pointer'>Add Class</button>
         </div>
@@ -88,7 +129,7 @@ function InputSection() {
                     onChange={(e) => setAttributeName({...attributeName, className:e.target.value})}
                     value={attributeName.className}
                 >
-                    <option>Select Class</option>
+                    <option value="" disabled>Select Class</option>
                     {
                         classInput.map((classes) => (
                             <option key={classes.className} value={classes.className}>{classes.className}</option>
@@ -96,7 +137,7 @@ function InputSection() {
                     }
                 </select>
 
-                <input onChange={(e) => setAttributeName({...attributeName, name: e.target.value})} value={attributeName.name} type="text" className='border p-2 rounded w-full' placeholder='Attribute Name'/>
+                <input onChange={(e) => setAttributeName({...attributeName, name: e.target.value})} onKeyDown={(e) => {if(e.key === "Enter") addAttribute()}} value={attributeName.name} type="text" className='border p-2 rounded w-full' placeholder='Attribute Name'/>
 
                 <select
                     className="border p-2 my-1 md:m-0 rounded w-full md:w-1/3"
@@ -122,7 +163,7 @@ function InputSection() {
                     className="border p-2 my-1 md:m-0 rounded w-full md:w-1/3"
                     onChange={(e) => setMethodName({...methodName, methodClass:e.target.value})}
                 >
-                    <option>Select Class</option>
+                    <option value={""}>Select Class</option>
                     {
                         classInput.map((classes) => (
                             <option key={classes.className} value={classes.className}>{classes.className}</option>
@@ -130,7 +171,7 @@ function InputSection() {
                     }
                 </select>
 
-                <input onChange={(e) => setMethodName({...methodName, name:e.target.value})} type="text" className='border p-2 rounded w-full' placeholder='Method Name'/>
+                <input onChange={(e) => setMethodName({...methodName, name:e.target.value})} onKeyDown={(e) => {if(e.key === "Enter") addMethod()}} value={methodName.name} type="text" className='border p-2 rounded w-full' placeholder='Method Name'/>
 
                 <select
                     className="border p-2 my-1 md:m-0 rounded w-full md:w-1/3"
@@ -165,7 +206,7 @@ function InputSection() {
                     }
                 </select>
 
-                <p className='flex items-center justify-between w-full rounded shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 mx-0 my-1 sm:m-2'>
+                <p className='flex items-center justify-between w-full rounded shadow-md bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 mx-0 my-1 sm:m-2'>
                     Extends
                 </p>
 
@@ -187,10 +228,10 @@ function InputSection() {
 
         {/* Add relation */}
         <SubTitle text1={"Add Relation"} />
-        <div>
-            <div className='flex gap-5 mb-3'>
+        <div className='flex flex-col gap-2 sm:block'>
+            <div className='flex flex-col sm:flex-row gap-2 sm:gap-5 sm:mb-3'>
                 <select
-                className="border p-2 my-1 md:m-0 rounded w-full md:w-1/2"
+                className="border p-2 my-1 md:m-0 rounded w-full sm:w-1/2"
                 onChange={(e) => setRelationInput({...relationInput, from:e.target.value})}
                 >
                     <option>Select Class 1</option>
@@ -201,7 +242,7 @@ function InputSection() {
                     }
                 </select>
                 <select
-                className="border p-2 my-1 md:m-0 rounded w-full md:w-1/2"
+                className="border p-2 my-1 md:m-0 rounded w-full sm:w-1/2"
                 onChange={(e) => setRelationInput({...relationInput, multiplicity1:e.target.value})}
                 >
                     <option>Multiplicity</option>
@@ -214,11 +255,11 @@ function InputSection() {
                 </select>
             </div>
 
-            <div className='flex gap-5 mb-3'>
-                <input onChange={(e) => setRelationInput({...relationInput, associationName:e.target.value})} value={relationInput.associationName} className='border p-2 rounded w-1/3' placeholder='Association Name' type="text" />
+            <div className='flex flex-col sm:flex-row gap-2 sm:gap-5 sm:mb-3'>
+                <input onChange={(e) => setRelationInput({...relationInput, associationName:e.target.value})} value={relationInput.associationName} className='border p-2 rounded w-full sm:w-1/2' placeholder='Association Name' type="text" />
 
                 <select
-                className="border p-2 my-1 md:m-0 rounded w-full md:w-1/3"
+                className="border p-2 my-1 md:m-0 rounded w-full md:w-1/2"
                 onChange={(e) => setRelationInput({...relationInput, assciationType:e.target.value})}
                 >
                     <option>Association Type</option>
@@ -227,18 +268,9 @@ function InputSection() {
                     <option value="*--">Composition</option>
                     <option value="-->">Dependency</option>
                 </select>
-
-                <select
-                className="border p-2 my-1 md:m-0 rounded w-full md:w-1/3"
-                onChange={(e) => setRelationInput({...relationInput, direction:e.target.value})}
-                >
-                    <option>Direction</option>
-                    <option value="">To</option>
-                    <option value="">From</option>
-                </select>
             </div>
 
-            <div className='flex gap-5 '>
+            <div className='flex flex-col sm:flex-row gap-2 sm:gap-5 '>
                 <select
                 className="border p-2 my-1 md:m-0 rounded w-full md:w-1/2"
                 onChange={(e) => setRelationInput({...relationInput, to:e.target.value})}

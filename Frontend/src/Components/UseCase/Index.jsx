@@ -10,7 +10,7 @@ function Index() {
     
   return (
     <div>
-        <Title text1={"Use Case Diagram"} text2={"Generator"} />
+        <Title text1={"Use Case"} text2={"Generator"} />
 
         <InputSection />
         

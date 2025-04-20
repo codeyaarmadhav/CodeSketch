@@ -63,5 +63,11 @@ export const create = [
         title: 'Component Diagram',
         description: 'Create a Component for your project',
         image: component,
+    },
+    {
+        id: 'gantt',
+        title: 'Gantt Chart',
+        description: 'Create a Gantt chart for your project',
+        image: logo
     }
 ]

@@ -4,8 +4,8 @@ const ClassContext = createContext();
 
 export const ClassContextProvider = (props) => {
     const [className, setClassName] = useState('');
-    const [attributeName, setAttributeName] = useState({name:"", attributeType: "Integer"});
-    const [methodName, setMethodName] = useState({methodType: "Void"});
+    const [attributeName, setAttributeName] = useState({name:"", attributeType: "Integer", className:""});
+    const [methodName, setMethodName] = useState({methodType: "Void", methodClass:"", name:""});
     const [classInput, setClassInput] = useState([]);
 
     const [generalRelation, setGeneralRelation] = useState([]);
