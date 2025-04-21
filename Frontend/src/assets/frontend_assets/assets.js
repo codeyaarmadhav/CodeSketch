@@ -15,6 +15,7 @@ import classd from './class.png';
 import sequence from './sequence.png';
 import activity from './activity.png';
 import component from './component.png';
+import gantt from'./gantt.png';
 
 import community from './community.png';
 import time from './time.png';
@@ -68,6 +69,6 @@ export const create = [
         id: 'gantt',
         title: 'Gantt Chart',
         description: 'Create a Gantt chart for your project',
-        image: logo
+        image: gantt
     }
 ]
