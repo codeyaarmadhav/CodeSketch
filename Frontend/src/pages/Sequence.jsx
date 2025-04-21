@@ -1,6 +1,6 @@
 import React from 'react'
 import SequenceContextProvider from '../Components/Sequence/SequenceContext'
-import SequenceForm from '../Components/GanttChart.jsx'
+import SequenceForm from '../Components/Sequence/Index.jsx'
 
 function Sequence() {
   return (
