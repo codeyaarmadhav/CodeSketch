@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SubTitle from "../SubTitle";
-import { useActivityContext } from "../../context/ActivtyContext";
+import SubTitle from "../SubTitle.jsx";
+import {useActivityContext} from "../../context/ActivtyContext.jsx";
 import {toast} from 'react-toastify';
 
 function SequentialFlow() {

@@ -1,8 +1,8 @@
 import React from 'react'
-import InputSection from './InputSection'
-import DisplaySection from './DisplaySection'
-import DisplayUML from '../DisplayUML'
-import generateUMLCode from './generateUMLCode'
+import InputSection from './InputSection.jsx'
+import DisplaySection from './DisplaySection.jsx'
+import DisplayUML from '../DisplayUML.jsx'
+import generateClassCode from '../../utils/generateClassCode.js'
 import Title from '../Title'
 
 function Index() {
@@ -14,7 +14,7 @@ function Index() {
 
         <DisplaySection />
 
-        <DisplayUML code={generateUMLCode()} />
+        <DisplayUML code={generateClassCode()} />
     </div>
   )
 }

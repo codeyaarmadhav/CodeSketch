@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PlantUmlEncoder from 'plantuml-encoder';
-import SubTitle from './SubTitle';
+import SubTitle from './SubTitle.jsx';
 
 
 function DisplayUML({code}) {

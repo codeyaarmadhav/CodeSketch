@@ -1,6 +1,6 @@
 import React from 'react'
-import { useClassContext } from './ClassContext';
-import SubTitle from '../SubTitle';
+import { useClassContext } from '../../context/ClassContext.jsx';
+import SubTitle from '../SubTitle.jsx';
 import { toast } from 'react-toastify';
 
 function InputSection() {

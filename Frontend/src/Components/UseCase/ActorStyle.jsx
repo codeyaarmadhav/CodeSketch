@@ -1,6 +1,6 @@
 import React from 'react'
-import { useUseCaseContext } from './UseCaseContext';
-import SubTitle from '../SubTitle';
+import { useUseCaseContext } from '../../context/UseCaseContext.jsx';
+import SubTitle from '../SubTitle.jsx';
 
 function ActorStyle() {
     const {setActorStyle} = useUseCaseContext();

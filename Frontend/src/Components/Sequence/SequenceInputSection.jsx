@@ -1,6 +1,6 @@
 import React from "react";
-import SubTitle from "../SubTitle";
-import { useSequenceContext } from "../../context/SequenceContext";
+import SubTitle from "../SubTitle.jsx";
+import { useSequenceContext } from "../../context/SequenceContext.jsx";
 import { toast } from 'react-toastify';
 
 function SequenceInputSection() {

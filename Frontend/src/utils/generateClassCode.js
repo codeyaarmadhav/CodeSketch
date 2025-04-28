@@ -1,4 +1,4 @@
-import { useClassContext } from "./ClassContext";
+import { useClassContext } from "../context/ClassContext";
 
 function generateUMLCode() {
 

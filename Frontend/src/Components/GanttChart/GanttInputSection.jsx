@@ -1,6 +1,6 @@
 import React from 'react'
-import { useGanttContext } from './GanttContext';
-import SubTitle from '../SubTitle';
+import { useGanttContext } from '../../context/GanttContext.jsx';
+import SubTitle from '../SubTitle.jsx';
 import {toast} from 'react-toastify'
 
 function InputSection() {

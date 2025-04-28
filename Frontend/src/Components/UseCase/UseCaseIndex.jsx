@@ -1,10 +1,10 @@
 import React from 'react'
-import Title from "../Title";
-import InputSection from './InputSection';
-import DisplaySection from './DisplaySection.jsx';
+import Title from "../Title.jsx";
+import InputSection from './UseCaseInputSection.jsx';
+import DisplaySection from './UseCaseDisplaySection.jsx';
 import ActorStyle from './ActorStyle.jsx';
 import DisplayUML from '../DisplayUML.jsx';
-import generateUMLCode from './generateUMLCode.js';
+import generateUseCaseCode from '../../utils/generateUseCaseCode.js';
 
 function Index() {
     
@@ -18,7 +18,7 @@ function Index() {
 
         <DisplaySection />
 
-        <DisplayUML code={generateUMLCode()} />      
+        <DisplayUML code={generateUseCaseCode()} />      
     </div>
   )
 }

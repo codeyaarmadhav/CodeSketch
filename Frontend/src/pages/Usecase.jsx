@@ -1,11 +1,11 @@
 import React from 'react'
-import UseCaseForm from '../Components/UseCase/Index.jsx'
-import { UseCaseContextProvider } from '../Components/UseCase/UseCaseContext.jsx'
+import UseCaseIndex from '../Components/UseCase/UseCaseIndex.jsx'
+import { UseCaseContextProvider } from '../context/UseCaseContext.jsx'
 
 function UseCase() {
   return (
     <UseCaseContextProvider>
-      <UseCaseForm />
+      <UseCaseIndex />
     </UseCaseContextProvider>
   )
 }

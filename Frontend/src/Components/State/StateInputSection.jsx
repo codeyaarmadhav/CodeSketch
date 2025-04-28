@@ -1,6 +1,6 @@
 import React, { startTransition } from "react";
 import SubTitle from "../SubTitle.jsx";
-import { useStateContext } from "../../context/StateContexxt";
+import { useStateContext } from "../../context/StateContexxt.jsx";
 import { toast } from "react-toastify";
 
 function StateInputSection() {
@@ -103,12 +103,12 @@ function StateInputSection() {
             className="border p-2 rounded my-1 md:m-0  w-full "
           >
             <option>To State</option>
-            <option value="[*]">Final State</option>
             {states.map((state) => (
               <option key={state.name} value={state.name}>
                 {state.name}
               </option>
             ))}
+            <option value="[*]">Final State</option>
           </select>
 
           <input

@@ -1,8 +1,6 @@
 import React from 'react'
-import { useGanttContext } from './GanttContext'
-import SubTitle from '../SubTitle';
-import generatePlantUML from './generateUmlCode';
-import DisplayUML from '../DisplayUML';
+import { useGanttContext } from '../../context/GanttContext.jsx'
+import SubTitle from '../SubTitle.jsx';
 
 function DisplaySection() {
 
@@ -40,11 +38,6 @@ function DisplaySection() {
           </div>
         </>
       )}
-
-      {
-        startDate.length === 0 ? "" : tasks.length === 0 ? "" : <DisplayUML code={generatePlantUML()} />
-      }
-      
 
     </div>
   )

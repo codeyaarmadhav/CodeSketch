@@ -1,6 +1,6 @@
 import React from 'react'
-import ActivityInputSection from './ActivityInputSection'
-import { useActivityContext } from '../../context/ActivtyContext'
+import ActivityInputSection from './ActivityInputSection.jsx'
+import { useActivityContext } from '../../context/ActivtyContext.jsx'
 import DisplayUML from '../DisplayUML.jsx';
 
 function ActivityIndex() {

@@ -1,17 +1,13 @@
 import React from 'react'
-import { useClassContext } from './ClassContext';
-import SubTitle from '../SubTitle';
+import { useClassContext } from '../../context/ClassContext.jsx';
+import SubTitle from '../SubTitle.jsx';
 
 function DisplaySection() {
 
-    const {className, setClassName,
-        attributeName, setAttributeName,
-        methodName, setMethodName,
+    const {
         classInput, setClassInput,
         generalRelation, setGeneralRelation,
-        generalRelationInput, setGeneralRelationInput,
-        relation, setRelation,
-        relationInput, setRelationInput} = useClassContext();
+        relation, setRelation} = useClassContext();
 
     //removeclass
     function removeClass(index){

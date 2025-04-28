@@ -1,6 +1,6 @@
 import React from 'react'
 import ClassForm from '../Components/Class/Index.jsx'
-import { ClassContextProvider } from '../Components/Class/ClassContext'
+import { ClassContextProvider } from '../context/ClassContext.jsx'
 
 function Class() {
   return (

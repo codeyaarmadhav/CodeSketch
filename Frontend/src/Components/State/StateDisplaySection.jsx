@@ -1,5 +1,5 @@
 import React from "react";
-import SubTitle from "../SubTitle";
+import SubTitle from "../SubTitle.jsx";
 import { useStateContext } from "../../context/StateContexxt.jsx";
 import { toast } from "react-toastify";
 
@@ -7,12 +7,8 @@ function StateDisplaySection() {
   const {
     states,
     setStates,
-    stateInput,
-    setStateInput,
     transition,
     setStateTransition,
-    transitionInput,
-    setTransitionInput,
   } = useStateContext(); 
 
   //remove state
@@ -68,11 +64,11 @@ function StateDisplaySection() {
             className="flex items-center justify-between w-full rounded-lg shadow-lg bg-white transition-shadow duration-300 text-base ease-in-out border-gray-400 border px-3 py-2 m-2 gap-2"
           >
             <p className="bg-gray-100 text-xs md:text-sm rounded p-1 w-1/3">
-              From: <span>{trans.from}</span>
+              From: <span>{trans.from === "[*]" ? "Initial" : trans.from}</span>
             </p>
 
             <p className="bg-gray-100 text-xs md:text-sm rounded p-1 w-1/3">
-              To: <span>{trans.to}</span>
+              To: <span>{trans.to === "[*]" ? "Final" : trans.from}</span>
             </p>
 
             <p className="bg-gray-100 text-xs md:text-sm rounded p-1 w-1/3">

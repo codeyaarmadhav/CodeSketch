@@ -1,4 +1,4 @@
-import { useUseCaseContext } from "./UseCaseContext";
+import { useUseCaseContext } from "../context/UseCaseContext.jsx";
 
 function generateUMLCode() {
     const {actors, useCases, relationships, actorStyle} = useUseCaseContext();

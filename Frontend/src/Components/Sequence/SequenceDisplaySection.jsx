@@ -1,8 +1,6 @@
 import React from 'react'
-import SubTitle from '../SubTitle'
-import { useSequenceContext } from '../../context/SequenceContext';
-import DisplayUML from '../DisplayUML';
-import generateUMLCode from '../../utils/generateSequenceCode';
+import SubTitle from '../SubTitle.jsx'
+import { useSequenceContext } from '../../context/SequenceContext.jsx';
 import {toast } from 'react-toastify'
 
 function SequenceDisplaySection() {
@@ -53,11 +51,6 @@ function SequenceDisplaySection() {
           ))}
         </div>
       </div>
-
-      {
-        messages.length !== 0 ? <DisplayUML code={generateUMLCode()} /> : "" 
-      }
-      
     </div>
   )
 }

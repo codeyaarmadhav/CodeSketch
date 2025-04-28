@@ -1,5 +1,5 @@
 import React from "react";
-import { useUseCaseContext } from "./UseCaseContext.jsx";
+import { useUseCaseContext } from "../../context/UseCaseContext.jsx";
 import SubTitle from "../SubTitle.jsx";
 import { toast } from "react-toastify";
 

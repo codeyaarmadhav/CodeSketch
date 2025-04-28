@@ -1,5 +1,4 @@
 import React from 'react'
-import SubTitle from '../SubTitle.jsx'
 import { useActivityContext } from '../../context/ActivtyContext.jsx'
 import SequentialFlow from './SequentialFlow.jsx';
 import ConditionalFlow from './ConditionalFlow.jsx';

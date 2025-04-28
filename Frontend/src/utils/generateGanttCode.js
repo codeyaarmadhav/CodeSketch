@@ -1,4 +1,4 @@
-import { useGanttContext } from "./GanttContext";
+import { useGanttContext } from "../context/GanttContext";
 
 const generatePlantUML = () => {
     const {tasks, startDate} = useGanttContext();
