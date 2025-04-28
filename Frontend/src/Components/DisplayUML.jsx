@@ -5,10 +5,12 @@ import SubTitle from './SubTitle.jsx';
 
 function DisplayUML({code}) {
     const [umlImage, setUmlImage] = useState('');
+    const [loading, setLoading] = useState(false);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
     
+        setLoading(true);
         try {
           const encodedUml = PlantUmlEncoder.encode(code); // ✅ Encode UML
           const imageUrl = `https://www.plantuml.com/plantuml/png/${encodedUml}`;
@@ -55,7 +57,10 @@ function DisplayUML({code}) {
             <div className="">
                 <SubTitle text1={"Generated UML Diagram"} />
                 <div className="flex flex-col items-center my-15">
-                    <img src={umlImage} alt="UML Diagram" />
+                  {
+                    loading && <h1 className='text-gray-500'>Loading...</h1>
+                  }
+                  <img src={umlImage} alt="UML Diagram" onLoad={() => setLoading(false)}/>
                 </div>
                 <div>
                     <button
