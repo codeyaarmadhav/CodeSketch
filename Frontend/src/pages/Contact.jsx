@@ -26,9 +26,11 @@ function Contact() {
                 </div>
                 
 
-                <SubTitle text1={"Career at CodeSketch"} />   
+                <SubTitle text1={"Contribute at CodeSketch"} />   
 
-                <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all sm:w-1/2 duration-500 cursor-pointer">Explore Jobs</button>
+                <a href="https://github.com/yashrajtilwani/CodeSketch" target="_blank" rel="noopener noreferrer">
+                    <button className="border border-black px-8 py-4 text-sm hover:bg-black hover:text-white transition-all sm:w-1/2 duration-500 cursor-pointer"><strong>Contribute</strong></button>
+                </a>
 
                 <p>Learn more about our teams and job openings.</p>
             </div>

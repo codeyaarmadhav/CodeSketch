@@ -13,6 +13,8 @@ import About from './pages/About.jsx'
 import Contact from './pages/Contact.jsx'
 import NotFound from './pages/NotFound.jsx'
 import Gantt from './pages/Gantt.jsx'
+import Activity from './pages/Activity.jsx'
+import LoginPage from './pages/LoginPage.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,7 +26,9 @@ const router = createBrowserRouter(
         <Route path="class" element={<Class />} />
         <Route path="sequence" element={<Sequence />} />
         <Route path="gantt" element={<Gantt />} />
+        <Route path="activity" element={<Activity />} />
       </Route>
+      <Route path="login" element={<LoginPage />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />

@@ -1,11 +1,18 @@
 import React from 'react'
-import SequenceContextProvider from '../Components/Sequence/SequenceContext'
-import SequenceForm from '../Components/Sequence/Index.jsx'
+import SequenceContextProvider from '../context/SequenceContext.jsx'
+import Title from '../Components/Title.jsx'
+import SequenceInputSection from '../Components/Sequence/SequenceInputSection.jsx'
+import SequenceDisplaySection from '../Components/Sequence/SequenceDisplaySection.jsx'
 
 function Sequence() {
   return (
     <SequenceContextProvider>
-        <SequenceForm />
+      <Title text1={"Sequence Diagram"} text2={"Generator"} />
+
+      <SequenceInputSection />
+
+      <SequenceDisplaySection />
+
     </SequenceContextProvider>
   )
 }
