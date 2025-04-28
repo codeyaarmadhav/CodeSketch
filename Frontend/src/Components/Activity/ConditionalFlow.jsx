@@ -82,7 +82,7 @@ function ConditionalFlow() {
         className="border p-2 rounded w-full mb-2"
       />
 
-      <div className="flex md:felx-col gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         <div className="w-full">
           <h1 className="text-lg font-semibold text-gray-700 px-5">IF</h1>
 

@@ -16,6 +16,7 @@ import sequence from './sequence.png';
 import activity from './activity.png';
 import component from './component.png';
 import gantt from'./gantt.png';
+import state from './state.png'
 
 import community from './community.png';
 import time from './time.png';
@@ -36,16 +37,16 @@ export const assets = {
 
 export const create = [
     {
-        id: 'usecase',
-        title: 'Use Case Diagram',
-        description: 'Create a use case for your project',
-        image: usecase,
-    },
-    {
         id: 'class',
         title: 'Class Diagram',
         description: 'Create a class for your project',
         image: classd,
+    },
+    {
+        id: 'usecase',
+        title: 'Use Case Diagram',
+        description: 'Create a use case for your project',
+        image: usecase,
     },
     {
         id: 'activity',
@@ -60,10 +61,10 @@ export const create = [
         image: sequence,
     },
     {
-        id: 'component',
-        title: 'Component Diagram',
-        description: 'Create a Component for your project',
-        image: component,
+        id: 'state',
+        title: 'State Diagram',
+        description: 'Create a State for your project',
+        image: state,
     },
     {
         id: 'gantt',
