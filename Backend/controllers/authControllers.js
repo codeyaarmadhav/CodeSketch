@@ -2,6 +2,8 @@ import User from "../model/userModel.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
+const isProd = process.env.NODE_ENV === 'production';
+
 async function signup(req, res){
     //deconstructing the data from the request body
     const {username, email, password} = req.body;
@@ -39,7 +41,9 @@ async function signup(req, res){
 
     //setting the cookie with the token
     res.cookie('token', token, {
-        httpOnly: false,
+        httpOnly: true,
+        secure: isProd,               // only true in production
+        sameSite: isProd ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000
     }).json({success: true, message: 'Logged in successfully' });
 }
@@ -65,14 +69,18 @@ async function login(req, res) {
     const token = jwt.sign({id:user._id}, process.env.JWT_SECRET, {expiresIn: "1d"});
 
     res.cookie('token', token, {
-        httpOnly: false,
+        httpOnly: true,
+        secure: isProd,               // only true in production
+        sameSite: isProd ? 'none' : 'lax',
         maxAge: 24 * 60 * 60 * 1000
     }).json({success: true, message: 'Logged in successfully' });
 }
 
 async function logout(req, res) {
     res.cookie('token', null, {
-        httpOnly: false,
+        httpOnly: true,
+        secure: isProd,               // only true in production
+        sameSite: isProd ? 'none' : 'lax',
         maxAge: 0
     });
     res.json({success: true, message: 'Logged out successfully' });
