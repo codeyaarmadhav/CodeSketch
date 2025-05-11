@@ -14,7 +14,7 @@ function Index() {
 
         <DisplaySection />
 
-        <DisplayUML code={generateClassCode()} />
+        <DisplayUML code={generateClassCode()} type={"Class Diagram"}/>
     </div>
   )
 }

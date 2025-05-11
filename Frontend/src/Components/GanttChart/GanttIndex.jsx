@@ -11,7 +11,7 @@ function GanttIndex() {
 
         <GanttDisplaySection />
 
-        <DisplayUML code={generateGanttCode()} />
+        <DisplayUML code={generateGanttCode()} type={"Gantt Chart"}/>
     </div>
   )
 }

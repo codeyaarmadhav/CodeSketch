@@ -1,18 +1,24 @@
 import React, { useState } from 'react'
 import PlantUmlEncoder from 'plantuml-encoder';
 import SubTitle from './SubTitle.jsx';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { handleDownload } from '../utils/helper.js';
 
 
-function DisplayUML({code}) {
+function DisplayUML({code, type}) {
     const [umlImage, setUmlImage] = useState('');
     const [loading, setLoading] = useState(false);
+
+    const URL = "http://localhost:8080";
+    const encodedUml = PlantUmlEncoder.encode(code);
     
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         setLoading(true);
         try {
-          const encodedUml = PlantUmlEncoder.encode(code); // ✅ Encode UML
+          //const encodedUml = PlantUmlEncoder.encode(code); // ✅ Encode UML
           const imageUrl = `https://www.plantuml.com/plantuml/png/${encodedUml}`;
     
           setUmlImage(imageUrl); // ✅ Update state with URL
@@ -21,30 +27,19 @@ function DisplayUML({code}) {
         }
     };
 
-    
-    const handleDownload = async () => {
-      try {
-        const response = await fetch(umlImage, {
-          mode: 'cors' // make sure CORS is allowed
-        });
-
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "diagram.png";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-
-        // Optional: revoke object URL to free memory
-        window.URL.revokeObjectURL(url);
-      } catch (error) {
-        console.error("Download failed", error);
-        alert("Failed to download image. Try right-click > Save Image As.");
+    async function handleProjectSave() {
+      try{
+        const response = await axios.post(`${URL}/api/v2/project/create`, { data: encodedUml, type }, {withCredentials: true});
+        if(response.data.success){
+          toast.success(response.data.message)
+        }else {
+          toast.error(response.data.message)
+        }
+      } catch(err){
+        console.log(err);
+        toast.error("Failed to save project. Please try again.")
       }
-    };
+    }
     
   return (
     <div>
@@ -62,12 +57,18 @@ function DisplayUML({code}) {
                   }
                   <img src={umlImage} alt="UML Diagram" onLoad={() => setLoading(false)}/>
                 </div>
-                <div>
+                <div className='flex flex-col sm:flex-row gap-2'>
                     <button
-                      onClick={handleDownload}
+                      onClick={() => handleDownload(umlImage)}
                       className="bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer"
                     >
                     Download Diagram
+                    </button>
+                    <button
+                      onClick={handleProjectSave}
+                      className="bg-[#a0a7ac] text-white p-2 my-2 w-full rounded cursor-pointer"
+                    >
+                    Save to Project
                     </button>
                 </div>
             </div>

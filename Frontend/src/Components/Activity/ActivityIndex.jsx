@@ -9,7 +9,7 @@ function ActivityIndex() {
     <div>
       <ActivityInputSection />
 
-      <DisplayUML code={code + "stop\n@enduml"} />
+      <DisplayUML code={code + "stop\n@enduml"} type={"Activity Diagram"} />
     </div>
   )
 }

@@ -11,7 +11,7 @@ function StateIndex() {
 
         <StateDisplaySection />
 
-        <DisplayUML code={generateStateCode()} />
+        <DisplayUML code={generateStateCode()} type={"State Diagram"}/>
     </div>
   )
 }

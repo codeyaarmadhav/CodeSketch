@@ -18,7 +18,7 @@ function Index() {
 
         <DisplaySection />
 
-        <DisplayUML code={generateUseCaseCode()} />      
+        <DisplayUML code={generateUseCaseCode()} type={"Use Case Diagram"}/>      
     </div>
   )
 }

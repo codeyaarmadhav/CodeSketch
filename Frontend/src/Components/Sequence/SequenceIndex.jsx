@@ -11,7 +11,7 @@ function SequenceIndex() {
 
       <SequenceDisplaySection />
 
-      <DisplayUML code={generateSequenceCode()} />
+      <DisplayUML code={generateSequenceCode()} type={"Sequence Diagram"}/>
     </div>
   )
 }

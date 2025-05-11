@@ -1,20 +1,51 @@
 import React, { useState } from "react";
 import axios from "axios";
+import {toast} from 'react-toastify';
+import { useNavigate } from "react-router";
 
-function LoginPage() {
+function LoginPage({tolink}) {
   const [signup, setSignup] = useState(true);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const URL = "http://loaclhost:8080/";
+  const URL = "http://localhost:8080";
+  const navigate = useNavigate();
 
   async function handleLogin(e) {
     e.preventDefault();
     try{
-      const response = await axios.post(`${URL}login`, { email, password });
-      console.log(response);
-      localStorage.setItem("token", response.data.token);
+      const response = await axios.post(`${URL}/api/v2/auth/login`, { email, password }, {withCredentials: true});
+      if(response.data.success){
+        setEmail("");
+        setPassword("");
+        if(tolink){
+          navigate(`/${tolink}`);
+        }  
+        toast.success(response.data.message);
+      }else {
+        toast.error(response.data.message)
+      }
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+  async function handleSignup(e) {
+    e.preventDefault();
+    try{
+      const response = await axios.post(`${URL}/api/v2/auth/signup`, { email, password, username }, {withCredentials: true});
+      if(response.data.success){
+        setEmail("");
+        setPassword("");
+        setUsername("");
+        if(tolink){
+          navigate(`/${tolink}`);
+        }  
+        toast.success(response.data.message)
+      }else {
+        toast.error("Fail to logout!")
+      }
     } catch(err){
       console.log(err);
     }
@@ -50,7 +81,7 @@ function LoginPage() {
             onChange={(e) => setPassword(e.target.value)}
             value={password}
             className="border p-2"
-            type="text"
+            type="password"
             placeholder="Password"
           />
 
@@ -71,9 +102,9 @@ function LoginPage() {
         </div>
 
         {signup ? (
-          <button onClick={handleLogin} className="bg-black text-white p-2 px-10">Log In</button>
+          <button onClick={handleLogin} className="bg-black text-white p-2 px-10 cursor-pointer">Log In</button>
         ) : (
-          <button className="bg-black text-white p-2 px-10">Sign Up</button>
+          <button onClick={handleSignup} className="bg-black text-white p-2 px-10 cursor-pointer">Sign Up</button>
         )}
       </div>
     </div>
