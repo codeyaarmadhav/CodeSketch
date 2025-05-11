@@ -8,7 +8,8 @@ import { handleDownload } from "../utils/helper";
 
 function UserProjects() {
   const [projects, setProjects] = useState([]);
-  const URL = "http://localhost:8080";
+  //const URL = "http://localhost:8080";
+  const URL = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
 
   async function getUserProjects() {

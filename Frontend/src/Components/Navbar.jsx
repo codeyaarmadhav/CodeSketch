@@ -10,7 +10,8 @@ function Navbar() {
 
   const navigate = useNavigate();
 
-  const URL = "http://localhost:8080";
+  //const URL = "http://localhost:8080";
+  const URL = import.meta.env.VITE_API_URL;
 
   async function handleLogout(e) {
     e.preventDefault();

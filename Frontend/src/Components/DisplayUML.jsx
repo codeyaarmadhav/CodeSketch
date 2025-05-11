@@ -10,7 +10,8 @@ function DisplayUML({code, type}) {
     const [umlImage, setUmlImage] = useState('');
     const [loading, setLoading] = useState(false);
 
-    const URL = "http://localhost:8080";
+    //const URL = "http://localhost:8080";
+    const URL = import.meta.env.VITE_API_URL;
     const encodedUml = PlantUmlEncoder.encode(code);
     
     const handleSubmit = async (e) => {
