@@ -17,7 +17,7 @@ function UserProjects() {
       const response = await axios.get(`${URL}/api/v2/project/user`, {
         withCredentials: true,
       });
-      console.log(response);
+      //console.log(response);
 
       if (response.data.success) {
         return setProjects(response.data.projects);

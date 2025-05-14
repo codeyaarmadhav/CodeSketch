@@ -17,6 +17,8 @@ import Activity from './pages/Activity.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import State from './pages/State.jsx'
 import UserProjects from './pages/UserProjects.jsx'
+import PaymentPlan from './pages/PaymentPlan.jsx'
+import PaymentSuccess from './pages/PaymentSuccess.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -35,6 +37,8 @@ const router = createBrowserRouter(
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/projects" element={<UserProjects />} />
+      <Route path="/payment" element={<PaymentPlan />} />
+      <Route path='/success' element={<PaymentSuccess />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

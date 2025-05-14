@@ -17,10 +17,11 @@ function generateUMLCode() {
     });
 
     relationships.forEach(({ from, to, type }) => {
-      code += `${from} ${type} (${to})\n`;
+      code += `"${from}" ${type} ("${to}")\n`;
     });
 
     code += "@enduml";
+    console.log(code);
     return code;
 }
 

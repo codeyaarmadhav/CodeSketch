@@ -105,7 +105,7 @@ function Navbar() {
 
           <div className={`hidden ${ isLoggedIn? "group-hover:block" : "group-hover:hidden"} group-hover:block absolute dropdown-menu right-0 pt-4`}>
             <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
-              <Link to="/projects"><p className="hover:text-black cursor-pointer">Projects</p></Link>
+              <Link to="/payment"><p className="hover:text-black cursor-pointer">Upgrad Plan</p></Link>
               <p
                 className="hover:text-black cursor-pointer"
                 onClick={handleLogout}
@@ -152,6 +152,13 @@ function Navbar() {
             to="/create"
           >
             CREATE
+          </NavLink>
+                    <NavLink
+            onClick={() => setVisible(flase)}
+            className="pl-6 py-2 border"
+            to="/projects"
+          >
+            PROJECTS
           </NavLink>
           <NavLink
             onClick={() => setVisible(flase)}
