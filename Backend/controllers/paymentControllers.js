@@ -1,5 +1,6 @@
 import instance from "../config/razorpay.js";
 import crypto from 'crypto';
+import User from "../model/userModel.js";
 
 
 async function paymentProcess(req, res){
@@ -32,7 +33,7 @@ async function paymentProcess(req, res){
 }
 
 const getKey = async (req, res) => {
-    res.status(200).json({
+    res.json({
         success: true,
         key: process.env.RZP_KEY_ID
     })
@@ -50,6 +51,10 @@ const paymentVerification = async (req, res) => {
     const generatedSignature = hmac.digest("hex");
 
     if(generatedSignature === razorpay_signature){
+        const user = await User.findById(req.user.id);
+        user.plan = "standard";
+        await user.save();
+        
         res.redirect(`${process.env.FRONTEND_LINK}/success?reference=${razorpay_payment_id}`);
     }else{
         res.status(400).json({

@@ -20,9 +20,7 @@ function LoginPage({tolink}) {
       if(response.data.success){
         setEmail("");
         setPassword("");
-        if(tolink){
-          navigate(`/${tolink}`);
-        }  
+        navigate(`/projects`);
         toast.success(response.data.message);
       }else {
         toast.error(response.data.message)

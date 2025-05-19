@@ -19,6 +19,7 @@ import State from './pages/State.jsx'
 import UserProjects from './pages/UserProjects.jsx'
 import PaymentPlan from './pages/PaymentPlan.jsx'
 import PaymentSuccess from './pages/PaymentSuccess.jsx'
+import Admin from './pages/Admin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -39,6 +40,7 @@ const router = createBrowserRouter(
       <Route path="/projects" element={<UserProjects />} />
       <Route path="/payment" element={<PaymentPlan />} />
       <Route path='/success' element={<PaymentSuccess />} />
+      <Route path='/admin' element={<Admin />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )

@@ -16,11 +16,14 @@ function DisplayUML({code, type}) {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        setLoading(true);
+        setUmlImage(''); 
         try {
           //const encodedUml = PlantUmlEncoder.encode(code); // ✅ Encode UML
           const imageUrl = `https://www.plantuml.com/plantuml/png/${encodedUml}`;
+
+          if(imageUrl != umlImage){
+            setLoading(true);
+          }
     
           setUmlImage(imageUrl); // ✅ Update state with URL
         } catch (error) {

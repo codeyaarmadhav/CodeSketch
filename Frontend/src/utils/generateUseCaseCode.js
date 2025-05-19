@@ -21,7 +21,7 @@ function generateUMLCode() {
     });
 
     code += "@enduml";
-    console.log(code);
+    //console.log(code);
     return code;
 }
 

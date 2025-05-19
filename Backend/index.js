@@ -7,6 +7,7 @@ import cookieParser from 'cookie-parser';
 import authRoutes from './routes/authRoutes.js';
 import projectRoutes from './routes/projectRoutes.js';
 import paymentRoutes from './routes/paymentRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -22,6 +23,7 @@ app.use(cookieParser());
 app.use("/api/v2/auth", authRoutes);
 app.use("/api/v2/project", projectRoutes);
 app.use("/api/v2/payment", paymentRoutes);
+app.use("/api/v2/admin", adminRoutes);
 
 app.get("/", (req, res) => {
     res.json({

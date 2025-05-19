@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 function Navbar() {
   let [visible, setVisible] = useState(false);
   let [isLoggedIn, setIsLoggedIn] = useState(false);
+  let [isAdmin, setIsAdmin] = useState(false);
+  let [profileClicked, setProfileClicked] = useState(false);
 
   const navigate = useNavigate();
 
@@ -33,11 +35,13 @@ function Navbar() {
   }
 
   async function handleMe(){
+    setProfileClicked(!profileClicked);
     try {
       const response = await axios.get(
         `${URL}/api/v2/auth/me`,
         { withCredentials: true }
       );
+      setIsAdmin(response.data.isAdmin);
       if(!response.data.success) {
         navigate("/login");
       } else {
@@ -103,9 +107,10 @@ function Navbar() {
             alt=""
           />
 
-          <div className={`hidden ${ isLoggedIn? "group-hover:block" : "group-hover:hidden"} group-hover:block absolute dropdown-menu right-0 pt-4`}>
-            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded">
+          <div className={` ${ isLoggedIn && profileClicked ? "block" : "hidden"}   absolute dropdown-menu right-0 pt-4`}>
+            <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-gray-100 text-gray-500 rounded">
               <Link to="/payment"><p className="hover:text-black cursor-pointer">Upgrad Plan</p></Link>
+              {isAdmin && <Link to="/admin"><p className="hover:text-black cursor-pointer">Admin</p></Link>}
               <p
                 className="hover:text-black cursor-pointer"
                 onClick={handleLogout}

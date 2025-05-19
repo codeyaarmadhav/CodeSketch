@@ -22,12 +22,12 @@ const handlePayment = async (amount) => {
         order_id: order.id, // This is the order_id created in the backend
         callback_url: `${URL}/api/v2/payment/verification`, // Your success URL
         prefill: {
-          name: 'Gaurav Kumar',
+          name: 'CodeSketch User',
           email: 'gaurav.kumar@example.com',
           contact: '9999999999'
         },
         theme: {
-          color: '#F37254'
+          color: '#bababa'
         },
       };
 

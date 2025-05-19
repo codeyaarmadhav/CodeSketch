@@ -5,8 +5,8 @@ import TryCatch from '../middlewares/TryCatch.js';
 
 const router = Router();
 
-router.post("/process", TryCatch(paymentProcess));
-router.get("/key", TryCatch(getKey));
-router.post("/verification", TryCatch(paymentVerification));
+router.post("/process", auth, TryCatch(paymentProcess));
+router.get("/key", auth, TryCatch(getKey));
+router.post("/verification", auth, TryCatch(paymentVerification));
 
 export default router;

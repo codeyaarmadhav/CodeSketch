@@ -90,7 +90,11 @@ async function getMe(req, res) {
     if(!req.user){
         return res.json({success: false, message: "User not found"});
     }
-    res.json({success: true, user: req.user});
+    const user = await User.findById(req.user.id).select("-password -__v");
+    if(!user){
+        return res.json({success: false, message: "User not found"});
+    }
+    res.json({success: true, user: req.user, isAdmin: user.admin});
 }
 
 export {signup, login, logout, getMe};

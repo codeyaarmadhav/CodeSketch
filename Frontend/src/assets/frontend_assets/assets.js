@@ -10,6 +10,7 @@ import hero3 from './hero3.png';
 import about from './about_us.png';
 import contact from './contact.png';
 import tick from './tick.png';
+import notfound from './notfound.png'
 
 import usecase from './usecase.png';
 import classd from './class.png';
@@ -31,7 +32,7 @@ import userinterfaceinfo from './user-interface.png'
 import opensourceinfo from './open-source.png';
 
 export const assets = {
-    logo, search_icon, profile_icon, menu_icon, dropdown_icon, activity, newlogo, hero, hero2, hero3, about, contact, tick,
+    logo, search_icon, profile_icon, menu_icon, dropdown_icon, activity, newlogo, hero, hero2, hero3, about, contact, tick, notfound,
     usecase, classd, sequence,
     community, time, umlinfo, storage, exportinfo, education, crossplatform, diagraminfo, userinterfaceinfo, opensourceinfo
 }
