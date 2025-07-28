@@ -20,7 +20,7 @@ Try the app live here: [CodeSketch](https://codesketch-yashraj-tilwanis-projects
 - ⏱️ **Time-Saving Workflow**: Ditch the traditional drag-and-drop interface that lets you create diagrams faster and more efficiently.
 - 🌐 **Browser-Based**: No installation needed—runs entirely in your browser.
 - 📄 **Export Options**: Export and download diagrams to png format.
-- 👤 **Admin Pane**: Admin Panel for user monitoring.
+- 👤 **Admin Panel**: Admin Panel for user monitoring.
 
 
 ## 🖼️ Screenshots
