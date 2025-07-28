@@ -2,8 +2,9 @@
 
 CodeSketch is a powerful web-based application that allows users to **create, visualize, and manage UML diagrams** with ease. Designed for software engineers, educators, and students, CodeSketch supports multiple UML diagram types and integrates diagram storage and management features.
 
-![GitHub repo size](https://img.shields.io/github/repo-size/yashrajtilwani/codesketch)
-![GitHub stars](https://img.shields.io/github/stars/yashrajtilwani/codesketch?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/codeyaarmadhav/CodeSketch)
+![GitHub stars](https://img.shields.io/github/stars/codeyaarmadhav/CodeSketch?style=social)
+
 
 ## 🌐 Live Demo
 
@@ -54,7 +55,7 @@ Try the app live here: [CodeSketch](https://codesketch-yashraj-tilwanis-projects
 ## 📦 Installation
 **Clone Git Repo**
 ```bash
-git clone https://github.com/yashrajtilwani/codesketch.git
+git clone https://github.com/codeyaarmadhav/CodeSketch.git
 ```
 **Terminal 1**
 ```bash
